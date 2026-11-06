@@ -98,7 +98,7 @@
 
 ## 11. Importación de MS Project (importacion-mpp)
 
-- [ ] 11.1 Revisar la licencia de la versión de MPXJ y registrar la decisión
+- [ ] 11.1 Agregar `MPXJ.Net` >= 16.10.0, registrar el aviso LGPL en la página legal y fijar la versión
 - [ ] 11.2 Reunir una batería de archivos .mpp, .mpt y XML de prueba (varias versiones de Project)
 - [ ] 11.3 ImportWorker: leer el archivo con MPXJ y producir el modelo intermedio
 - [ ] 11.4 Mapear tareas, jerarquía, dependencias, calendario base y línea base
@@ -131,6 +131,6 @@
 
 ## 14. Publicación
 
-- [ ] 14.1 Dockerfiles de la API y del ImportWorker, y build estático del frontend
+- [ ] 14.1 Dockerfiles de la API y del ImportWorker (con `libfontconfig`), y build estático del frontend
 - [ ] 14.2 Pipeline de despliegue con migraciones antes de liberar y balanceador con WebSockets
 - [ ] 14.3 Configurar dominio, HTTPS, URLs de retorno de Google y Microsoft, y SPF/DKIM del correo transaccional

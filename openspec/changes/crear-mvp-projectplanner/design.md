@@ -65,7 +65,8 @@ ASP.NET Core Identity para usuarios, hash de contraseñas, bloqueo y tokens de v
 Cada operación aplicada guarda en `project_changes` la versión, el autor, la fecha y hora, el tipo de operación y los valores anterior y nuevo (`jsonb`). La misma tabla sirve para la reconexión (D7) y para el historial de tareas. Se conserva indefinidamente en el MVP.
 
 ### D9. Importación de archivos de Microsoft Project
-- Librería **MPXJ** (LGPL; paquete NuGet para .NET generado con IKVM), que lee .mpp, .mpt y MSPDI XML desde Project 98 hasta las versiones actuales. El uso comercial está permitido cumpliendo la LGPL (se enlaza como librería sin modificarla). Hay que revisar la licencia de la versión concreta antes de adoptarla, porque algunos registros de paquetes muestran licencias distintas.
+- Librería **MPXJ** mediante el paquete NuGet oficial `MPXJ.Net` (licencia LGPL-2.1-or-later, confirmada en NuGet y en el repositorio oficial), versión 16.10.0 o superior porque las anteriores tienen avisos de seguridad. Lee .mpp, .mpt y MSPDI XML. Uso comercial permitido sin costo: se usa como dependencia sin modificarla y se incluye su aviso de licencia en la página legal. Al ser un servicio web, la aplicación no se distribuye, así que la LGPL no obliga a publicar el código de ProjectPlanner.
+- La imagen Docker del trabajador debe instalar `libfontconfig`, porque sin esa librería MPXJ.Net puede fallar en Linux.
 - El archivo se sube a almacenamiento temporal y lo procesa un **trabajador separado** (proceso o contenedor aparte) con límites de 2 minutos y 1 GB de memoria, porque IKVM carga un runtime de Java traducido y el archivo no es de confianza.
 - El trabajador produce un modelo intermedio propio (tareas, dependencias, calendario, recursos, asignaciones, costos, línea base y avisos de conversión). La API crea el proyecto a partir de ese modelo en una transacción, ejecuta los motores y compara la fecha de fin calculada con la del archivo para el informe.
 - El progreso se notifica al usuario por el hub de tiempo real.
@@ -87,7 +88,7 @@ Contenedores Docker para la API y para el trabajador de importación; frontend e
 
 - [El motor de programación tiene casos límite (desfases negativos, FF/SF, restricciones)] → Tests unitarios con proyectos de referencia cuyos resultados se comparan contra MS Project; los .mpp de prueba sirven también para la importación.
 - [Los resultados importados no coinciden con MS Project (calendarios por recurso, duraciones en horas, restricciones no admitidas)] → Informe de conversión obligatorio que compara fechas finales; ampliar el soporte según los casos reales.
-- [MPXJ vía IKVM es pesado y su licencia debe revisarse] → Trabajador aislado; revisión legal de la licencia de la versión usada antes de producción.
+- [MPXJ vía IKVM es pesado en memoria y tiempo de arranque] → Trabajador aislado con límites propios.
 - [Cuello de botella del despachador por proyecto si muchas personas editan a la vez] → Las operaciones son cortas (menos de 300 ms con 1 000 tareas); medir y, si hace falta, recalcular solo el subgrafo afectado.
 - [Fuga de costos a Lectores o a la vista pública a través del tiempo real] → DTOs y grupos separados por nivel de permiso, con tests que inspeccionan los mensajes enviados.
 - [Toma de cuenta por inicio de sesión externo con correo no verificado] → Identificación por id del proveedor y vinculación solo tras demostrar el control de la cuenta (D6).
