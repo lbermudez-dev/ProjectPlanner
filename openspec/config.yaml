@@ -5,13 +5,19 @@ context: |
   All artifacts must be written in es.
   Keep OpenSpec structural headings and SHALL/MUST keywords in English.
 
-  Proyecto: ProjectPlanner (proyecto nuevo, sin código todavía).
-  # TODO: describe aquí en 3-5 líneas qué es ProjectPlanner, para quién es
-  # y el stack elegido (lenguaje, framework, base de datos). La IA lee este
-  # bloque antes de cada propuesta.
+  Proyecto: ProjectPlanner. Herramienta web de gestión de proyectos y tareas al
+  estilo Microsoft Project (EDT jerárquica, dependencias, ruta crítica, línea
+  base, recursos, Gantt). Permite compartir un enlace público de solo lectura
+  del Gantt y del avance; para gestionar se requiere cuenta con correo y roles
+  por proyecto administrados por el administrador del proyecto.
+
+  Stack: frontend React + TypeScript (Vite); backend ASP.NET Core Web API
+  (.NET, C#) con EF Core; base de datos PostgreSQL. Despliegue en la nube.
 
 rules:
   proposal:
     - Indicar siempre qué queda fuera de alcance
+  specs:
+    - Los permisos de cada operación deben quedar explícitos por rol
   tasks:
     - Dividir las tareas en bloques de máximo 2 horas
