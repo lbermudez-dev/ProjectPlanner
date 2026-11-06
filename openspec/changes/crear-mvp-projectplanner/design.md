@@ -12,7 +12,7 @@ Proyecto nuevo, sin código. Motivación y alcance en `proposal.md`; comportamie
 **Non-Goals**
 - Edición sin conexión ni fusión de cambios en el cliente (CRDT/OT): el servidor ordena las operaciones.
 - Multi-tenant por organización o empresa (en el MVP el límite de acceso es el proyecto).
-- Escritura de .mpp (no hay forma soportada de generarlo; ver Out of Scope).
+- Escritura directa de .mpp (MPXJ no la soporta; se exporta MSPDI, ver D9b).
 
 ## Decisions
 
@@ -70,6 +70,12 @@ Cada operación aplicada guarda en `project_changes` la versión, el autor, la f
 - El archivo se sube a almacenamiento temporal y lo procesa un **trabajador separado** (proceso o contenedor aparte) con límites de 2 minutos y 1 GB de memoria, porque IKVM carga un runtime de Java traducido y el archivo no es de confianza.
 - El trabajador produce un modelo intermedio propio (tareas, dependencias, calendario, recursos, asignaciones, costos, línea base y avisos de conversión). La API crea el proyecto a partir de ese modelo en una transacción, ejecuta los motores y compara la fecha de fin calculada con la del archivo para el informe.
 - El progreso se notifica al usuario por el hub de tiempo real.
+
+### D9b. Exportación a XML de MS Project
+- El mismo trabajador de MPXJ hace el camino inverso: la API arma el modelo intermedio desde la base (filtrando correos según el rol) y el trabajador construye un `ProjectFile` de MPXJ y lo escribe con `UniversalProjectWriter` en formato MSPDI.
+- Las fechas se exportan ya calculadas y las tareas con programación automática, para que MS Project las respete.
+- La descarga se sirve como flujo directo; el archivo no se guarda en el servidor.
+- Un test de ida y vuelta (exportar → importar → comparar) se ejecuta en CI con los proyectos de referencia del motor de programación.
 
 ### D10. Enlaces compartidos
 Token de 32 bytes aleatorios (CSPRNG) en base64url; en la base se guarda solo su SHA-256. La ruta pública `/api/public/{token}` usa DTOs propios, sin correos, notas, costos ni historial. Limitación de tasa con el `RateLimiter` integrado de ASP.NET Core, por IP. La URL del frontend es `/v/{token}` e incluye `noindex`.

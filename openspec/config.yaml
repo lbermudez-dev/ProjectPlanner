@@ -8,7 +8,7 @@ context: |
   Proyecto: ProjectPlanner. Herramienta web de gestión de proyectos y tareas al
   estilo Microsoft Project (EDT jerárquica, dependencias, ruta crítica, línea
   base, recursos, costos y valor ganado, Gantt), con edición en tiempo real,
-  importación de archivos .mpp y login con correo, Google o Microsoft. Permite compartir un enlace público de solo lectura
+  importación de archivos .mpp, exportación a XML de MS Project y login con correo, Google o Microsoft. Permite compartir un enlace público de solo lectura
   del Gantt y del avance; para gestionar se requiere cuenta con correo y roles
   por proyecto administrados por el administrador del proyecto.
 

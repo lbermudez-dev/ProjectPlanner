@@ -108,29 +108,37 @@
 - [ ] 11.8 Crear el proyecto en una transacción, recalcular y comparar la fecha de fin con la del archivo
 - [ ] 11.9 Pantalla de subida con progreso por tiempo real e informe de importación
 
-## 12. Vista Gantt (vista-gantt)
+## 12. Exportación a MS Project (exportacion-ms-project)
 
-- [ ] 12.1 Spike: comparar una librería Gantt con un Gantt propio usando 1 000 tareas y actualizaciones remotas, y decidir
-- [ ] 12.2 Gantt alineado con la tabla: barras, avance, hitos y flechas de dependencia
-- [ ] 12.3 Escalas de día, semana y mes, y sombreado de días no laborables
-- [ ] 12.4 Interruptores de ruta crítica y de línea base
-- [ ] 12.5 Contraer y expandir tareas resumen sincronizado con la tabla
-- [ ] 12.6 Edición por arrastre (inicio como restricción, duración, nueva dependencia FS) solo para Editor y Administrador
-- [ ] 12.7 Aplicar cambios remotos sin perder desplazamiento ni selección, y mostrar la presencia sobre las filas
-- [ ] 12.8 Prueba de rendimiento: carga en menos de 3 s y desplazamiento fluido con 1 000 tareas
+- [ ] 12.1 Construir el modelo intermedio desde la base, omitiendo correos si quien exporta no es administrador
+- [ ] 12.2 En el ImportWorker, convertir el modelo a `ProjectFile` de MPXJ (tareas, dependencias, calendario, recursos, asignaciones, costos, línea base)
+- [ ] 12.3 Endpoint de exportación con permisos de Administrador y Editor y descarga directa del `.xml`
+- [ ] 12.4 Test de ida y vuelta (exportar → importar → comparar) en CI y prueba manual abriendo el archivo en Microsoft Project
+- [ ] 12.5 Botón de exportar con la nota de cómo guardar como .mpp desde Microsoft Project
 
-## 13. Enlaces compartidos (enlaces-compartidos)
+## 13. Vista Gantt (vista-gantt)
 
-- [ ] 13.1 Entidad ShareLink con token aleatorio de 32 bytes guardado como SHA-256
-- [ ] 13.2 Endpoints de administrador para crear, listar y revocar enlaces, con caducidad opcional
-- [ ] 13.3 Endpoint público `/api/public/{token}` con DTOs sin correos, notas, costos ni historial
-- [ ] 13.4 Respuesta uniforme para tokens inexistentes, revocados o caducados, y limitación de tasa por IP
-- [ ] 13.5 Actualización automática de la vista pública (grupo de solo lectura o consulta cada 10 s)
-- [ ] 13.6 Página web `/v/{token}` con Gantt de solo lectura, avance general, `noindex` y botón de iniciar sesión o registrarse
-- [ ] 13.7 Tests que verifican que la respuesta pública no contiene correos, notas ni costos
+- [ ] 13.1 Spike: comparar una librería Gantt con un Gantt propio usando 1 000 tareas y actualizaciones remotas, y decidir
+- [ ] 13.2 Gantt alineado con la tabla: barras, avance, hitos y flechas de dependencia
+- [ ] 13.3 Escalas de día, semana y mes, y sombreado de días no laborables
+- [ ] 13.4 Interruptores de ruta crítica y de línea base
+- [ ] 13.5 Contraer y expandir tareas resumen sincronizado con la tabla
+- [ ] 13.6 Edición por arrastre (inicio como restricción, duración, nueva dependencia FS) solo para Editor y Administrador
+- [ ] 13.7 Aplicar cambios remotos sin perder desplazamiento ni selección, y mostrar la presencia sobre las filas
+- [ ] 13.8 Prueba de rendimiento: carga en menos de 3 s y desplazamiento fluido con 1 000 tareas
 
-## 14. Publicación
+## 14. Enlaces compartidos (enlaces-compartidos)
 
-- [ ] 14.1 Dockerfiles de la API y del ImportWorker (con `libfontconfig`), y build estático del frontend
-- [ ] 14.2 Pipeline de despliegue con migraciones antes de liberar y balanceador con WebSockets
-- [ ] 14.3 Configurar dominio, HTTPS, URLs de retorno de Google y Microsoft, y SPF/DKIM del correo transaccional
+- [ ] 14.1 Entidad ShareLink con token aleatorio de 32 bytes guardado como SHA-256
+- [ ] 14.2 Endpoints de administrador para crear, listar y revocar enlaces, con caducidad opcional
+- [ ] 14.3 Endpoint público `/api/public/{token}` con DTOs sin correos, notas, costos ni historial
+- [ ] 14.4 Respuesta uniforme para tokens inexistentes, revocados o caducados, y limitación de tasa por IP
+- [ ] 14.5 Actualización automática de la vista pública (grupo de solo lectura o consulta cada 10 s)
+- [ ] 14.6 Página web `/v/{token}` con Gantt de solo lectura, avance general, `noindex` y botón de iniciar sesión o registrarse
+- [ ] 14.7 Tests que verifican que la respuesta pública no contiene correos, notas ni costos
+
+## 15. Publicación
+
+- [ ] 15.1 Dockerfiles de la API y del ImportWorker (con `libfontconfig`), y build estático del frontend
+- [ ] 15.2 Pipeline de despliegue con migraciones antes de liberar y balanceador con WebSockets
+- [ ] 15.3 Configurar dominio, HTTPS, URLs de retorno de Google y Microsoft, y SPF/DKIM del correo transaccional

@@ -12,6 +12,7 @@ Los equipos pequeños y medianos necesitan planificar y costear proyectos con la
 - Recursos del proyecto (miembros o recursos con nombre sin cuenta) asignables a tareas.
 - Costos: tarifas de recursos, costos fijos, presupuesto, costo real, línea base de costos y valor ganado.
 - Importación de planes desde archivos de Microsoft Project (.mpp, .mpt y XML).
+- Exportación de proyectos a XML de Microsoft Project (MSPDI), que MS Project abre y puede guardar como .mpp.
 - Edición colaborativa en tiempo real con presencia de usuarios.
 - Vista Gantt interactiva para editar y de solo lectura para visualizar.
 - Enlaces de visualización compartibles: cualquier persona con el enlace ve el Gantt y el avance sin autenticarse; el enlace se puede revocar y puede caducar.
@@ -27,6 +28,7 @@ Los equipos pequeños y medianos necesitan planificar y costear proyectos con la
 - `asignacion-recursos`: catálogo de recursos del proyecto, asignación a tareas y detección de sobreasignación.
 - `costos-proyecto`: tarifas, costos fijos, presupuesto, costo real, línea base de costos y valor ganado.
 - `importacion-mpp`: creación de un proyecto a partir de un archivo de Microsoft Project con informe de conversión.
+- `exportacion-ms-project`: descarga del proyecto como XML de Microsoft Project con fidelidad de ida y vuelta.
 - `edicion-tiempo-real`: propagación inmediata de cambios entre usuarios conectados, presencia y resolución de ediciones simultáneas.
 - `vista-gantt`: representación Gantt de las tareas, editable o de solo lectura según permisos.
 - `enlaces-compartidos`: enlaces públicos de solo lectura, revocables y con caducidad opcional.
@@ -37,7 +39,8 @@ Los equipos pequeños y medianos necesitan planificar y costear proyectos con la
 
 ## Out of Scope
 
-- Exportar a .mpp (MS Project no tiene formato abierto de escritura para .mpp; exportar a XML de MS Project se evaluará en un cambio posterior).
+- Exportar directamente a .mpp (MPXJ no escribe ese formato; se exporta XML de MS Project, que Project convierte a .mpp).
+- Exportar a otros formatos (Excel, PDF, Primavera).
 - Importar sobre un proyecto existente o sincronizar en ambos sentidos con MS Project o Project Server.
 - Varias monedas en un mismo proyecto y tipos de cambio.
 - Recursos materiales con consumo por unidades (se cubren con costo fijo o costo por uso).
