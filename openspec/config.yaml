@@ -1,0 +1,17 @@
+schema: spec-driven
+
+context: |
+  Language: es
+  All artifacts must be written in es.
+  Keep OpenSpec structural headings and SHALL/MUST keywords in English.
+
+  Proyecto: ProjectPlanner (proyecto nuevo, sin código todavía).
+  # TODO: describe aquí en 3-5 líneas qué es ProjectPlanner, para quién es
+  # y el stack elegido (lenguaje, framework, base de datos). La IA lee este
+  # bloque antes de cada propuesta.
+
+rules:
+  proposal:
+    - Indicar siempre qué queda fuera de alcance
+  tasks:
+    - Dividir las tareas en bloques de máximo 2 horas
