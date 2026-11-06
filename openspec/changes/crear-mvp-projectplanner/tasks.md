@@ -1,10 +1,10 @@
 ## 1. Base del repositorio
 
-- [ ] 1.1 Crear solución .NET en `api/` con proyectos Api, Application, Domain, Infrastructure, ImportWorker y Tests
-- [ ] 1.2 Crear app React + TypeScript con Vite en `web/` con React Router y TanStack Query
-- [ ] 1.3 Agregar `docker-compose.yml` con PostgreSQL para desarrollo local
-- [ ] 1.4 Configurar EF Core con Npgsql y la primera migración vacía
-- [ ] 1.5 Configurar GitHub Actions: build y tests de `api/` y `web/`
+- [x] 1.1 Crear solución .NET en `api/` con proyectos Api, Application, Domain, Infrastructure, ImportWorker y Tests
+- [x] 1.2 Crear app React + TypeScript con Vite en `web/` con React Router y TanStack Query
+- [x] 1.3 Agregar `docker-compose.yml` con PostgreSQL para desarrollo local
+- [x] 1.4 Configurar EF Core con Npgsql y la primera migración vacía
+- [x] 1.5 Configurar GitHub Actions: build y tests de `api/` y `web/`
 
 ## 2. Autenticación local (autenticacion-usuarios)
 

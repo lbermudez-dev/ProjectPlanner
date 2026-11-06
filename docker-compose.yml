@@ -1,0 +1,20 @@
+# Entorno de desarrollo local. Credenciales solo para desarrollo.
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: projectplanner
+      POSTGRES_USER: projectplanner
+      POSTGRES_PASSWORD: projectplanner_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U projectplanner -d projectplanner"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:

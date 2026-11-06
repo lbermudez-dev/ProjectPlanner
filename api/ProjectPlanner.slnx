@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ProjectPlanner.Api/ProjectPlanner.Api.csproj" />
+    <Project Path="src/ProjectPlanner.Application/ProjectPlanner.Application.csproj" />
+    <Project Path="src/ProjectPlanner.Domain/ProjectPlanner.Domain.csproj" />
+    <Project Path="src/ProjectPlanner.ImportWorker/ProjectPlanner.ImportWorker.csproj" />
+    <Project Path="src/ProjectPlanner.Infrastructure/ProjectPlanner.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ProjectPlanner.Tests/ProjectPlanner.Tests.csproj" />
+  </Folder>
+</Solution>
