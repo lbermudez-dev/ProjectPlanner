@@ -23,11 +23,18 @@ Quien abra un enlace vigente SHALL ver sin iniciar sesión el nombre del proyect
 - **THEN** ve el Gantt y el avance actualizados y ningún control de edición
 
 ### Requirement: Datos expuestos en el enlace
-La vista pública MUST NOT mostrar correos de miembros, notas de tareas, la lista de miembros ni otros enlaces. Los recursos asignados MUST mostrarse solo por nombre.
+La vista pública MUST NOT mostrar correos de miembros, notas de tareas, costos, tarifas, presupuesto, historial de cambios, la lista de miembros ni otros enlaces. Los recursos asignados MUST mostrarse solo por nombre.
 
 #### Scenario: Revisión de la respuesta pública
 - **WHEN** se consulta la API de la vista pública
-- **THEN** la respuesta no contiene correos ni notas
+- **THEN** la respuesta no contiene correos, notas ni datos de costos
+
+### Requirement: Actualización automática de la vista pública
+La vista pública SHALL reflejar los cambios del proyecto sin que el visitante recargue la página, con un retraso máximo de 10 segundos.
+
+#### Scenario: Cambio mientras el visitante mira
+- **WHEN** un Editor marca una tarea al 100 % mientras un visitante tiene abierto el enlace
+- **THEN** el visitante ve la tarea completada en menos de 10 segundos sin recargar
 
 ### Requirement: Revocación y caducidad
 El Administrador de proyecto SHALL poder revocar un enlace en cualquier momento. Un enlace revocado, caducado o de un proyecto eliminado MUST dejar de funcionar de inmediato.

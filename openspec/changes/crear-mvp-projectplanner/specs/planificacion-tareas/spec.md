@@ -82,9 +82,9 @@ El Administrador de proyecto SHALL poder guardar una línea base que congela ini
 - **WHEN** una tarea termina 3 días laborables después que en la línea base
 - **THEN** el sistema muestra una variación de +3 días para esa tarea
 
-### Requirement: Control de concurrencia
-El sistema MUST detectar cuando dos usuarios modifican la misma tarea y rechazar el segundo guardado basado en datos desactualizados.
+### Requirement: Cambios como intenciones
+Cada modificación de planificación MUST enviarse al servidor como una operación sobre campos concretos (por ejemplo, "duración = 5"), no como la tarea completa, para que el servidor la aplique sobre el estado más reciente según `edicion-tiempo-real`.
 
-#### Scenario: Edición simultánea
-- **WHEN** un Editor guarda una tarea que otro usuario modificó después de que la cargó
-- **THEN** el sistema rechaza el guardado y le pide recargar la tarea
+#### Scenario: Operación sobre estado reciente
+- **WHEN** un Editor cambia la duración de una tarea cuyo nombre otro usuario cambió un instante antes
+- **THEN** el servidor aplica solo la duración y el nombre nuevo se conserva

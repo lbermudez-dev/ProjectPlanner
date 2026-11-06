@@ -5,7 +5,7 @@ Controlar quién puede ver y gestionar cada proyecto mediante membresías con ro
 ## ADDED Requirements
 
 ### Requirement: Roles por proyecto
-Cada membresía SHALL tener exactamente uno de estos roles: Administrador de proyecto (todo, incluidos miembros, enlaces y eliminación), Editor (crear y editar tareas, dependencias, avance y asignaciones) y Lector (solo ver el proyecto dentro de la aplicación).
+Cada membresía SHALL tener exactamente uno de estos roles: Administrador de proyecto (todo, incluidos miembros, enlaces, costos, importación y eliminación), Editor (crear y editar tareas, dependencias, avance y asignaciones; ver costos) y Lector (solo ver el proyecto dentro de la aplicación, sin costos).
 
 #### Scenario: Lector intenta editar
 - **WHEN** un usuario con rol Lector intenta modificar una tarea
@@ -42,7 +42,7 @@ El Administrador de proyecto SHALL poder cambiar el rol de un miembro o quitarlo
 
 #### Scenario: Miembro removido
 - **WHEN** el administrador quita a un miembro
-- **THEN** ese usuario deja de ver el proyecto y sus asignaciones a tareas se conservan marcadas como recurso inactivo
+- **THEN** ese usuario deja de ver el proyecto y sus asignaciones se conservan en un recurso sin cuenta con su nombre
 
 ### Requirement: Aislamiento entre proyectos
 El sistema MUST impedir que un usuario acceda por la aplicación o la API a proyectos donde no es miembro.

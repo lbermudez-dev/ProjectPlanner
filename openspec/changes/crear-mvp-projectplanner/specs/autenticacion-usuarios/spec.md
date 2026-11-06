@@ -41,6 +41,31 @@ El sistema SHALL autenticar con correo y contraseña y mantener la sesión media
 - **WHEN** el usuario cierra sesión
 - **THEN** el token de refresco queda revocado y la sesión no puede reanudarse
 
+### Requirement: Inicio de sesión con Google y Microsoft
+El sistema SHALL permitir iniciar sesión con una cuenta de Google o de Microsoft (personal, laboral o educativa) mediante OpenID Connect. Si no existe una cuenta con ese correo, MUST crearse una; el correo se considera verificado solo si el proveedor lo garantiza, y si no, se envía el enlace de verificación habitual.
+
+#### Scenario: Primer ingreso con Google
+- **WHEN** una persona sin cuenta inicia sesión con Google y el proveedor indica que su correo está verificado
+- **THEN** el sistema crea la cuenta verificada e inicia la sesión
+
+#### Scenario: Correo no garantizado por el proveedor
+- **WHEN** una persona sin cuenta inicia sesión con Microsoft y el proveedor no garantiza que el correo esté verificado
+- **THEN** el sistema crea la cuenta pendiente y envía un enlace de verificación antes de dar acceso
+
+### Requirement: Vinculación segura de cuentas
+Si ya existe una cuenta con el mismo correo, el sistema MUST NOT vincular el proveedor automáticamente: la persona MUST demostrar que controla la cuenta existente (iniciando sesión con su método actual o con un código enviado al correo) antes de vincularlo.
+
+#### Scenario: Correo ya registrado con contraseña
+- **WHEN** alguien inicia sesión con Microsoft usando un correo que ya tiene cuenta con contraseña
+- **THEN** el sistema pide confirmar con la contraseña o con un código enviado al correo antes de vincular
+
+### Requirement: Gestión de métodos de acceso
+El usuario SHALL poder ver, vincular y desvincular Google, Microsoft y contraseña desde su perfil. El sistema MUST impedir quitar el último método de acceso.
+
+#### Scenario: Quitar el único método
+- **WHEN** un usuario que solo tiene Google intenta desvincularlo
+- **THEN** el sistema lo impide y le pide definir antes una contraseña o vincular otro proveedor
+
 ### Requirement: Bloqueo por intentos fallidos
 El sistema MUST bloquear temporalmente el inicio de sesión de una cuenta durante 15 minutos tras 5 intentos fallidos consecutivos.
 
